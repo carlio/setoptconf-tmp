@@ -1,9 +1,22 @@
 ==========
-setoptconf
+IMPORTANT!
 ==========
 
-.. image:: https://travis-ci.org/jayclassless/setoptconf.svg?branch=master
-   :target: https://travis-ci.org/jayclassless/setoptconf
+This is a fork of `setoptconf <https://github.com/jayclassless/setoptconf>`_ .
+It is a temporary solution to fix `prospector <https://github.com/PyCQA/prospector>`_
+being unable to install due to setoptconf not working with setuptools>=58 - 
+see `the issue here https://github.com/PyCQA/prospector/issues/438`_.
+
+This package is only meant as a temporary solution to fix CI builds using prosector
+until setoptconf can be removed from there. Therefore do not expect this fork to be 
+maintained and it will be purged once prospector is updated.
+
+==============
+setoptconf-tmp
+==============
+
+.. image:: https://travis-ci.com/setoptconf-tmp.svg?branch=master
+   :target: https://travis-ci.com/carlio/setoptconf-tmp
 
 ``setoptconf`` is a Python library that can be used to retrieve program settings
 from a variety of common sources:
