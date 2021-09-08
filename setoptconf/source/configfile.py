@@ -5,14 +5,12 @@ from ..util import csv_to_list
 from .filebased import FileBasedSource
 
 
-__all__ = (
-    'ConfigFileSource',
-)
+__all__ = ("ConfigFileSource",)
 
 
 class ConfigFileSource(FileBasedSource):
     def __init__(self, *args, **kwargs):
-        self.section = kwargs.pop('section', None)
+        self.section = kwargs.pop("section", None)
         super(ConfigFileSource, self).__init__(*args, **kwargs)
 
     def get_settings_from_file(self, file_path, settings, manager=None):

@@ -1,15 +1,7 @@
 from .exception import DataTypeError
 
 
-__all__ = (
-    'DataType',
-    'String',
-    'Integer',
-    'Float',
-    'Boolean',
-    'List',
-    'Choice',
-)
+__all__ = ("DataType", "String", "Integer", "Float", "Boolean", "List", "Choice")
 
 
 class DataType(object):
@@ -53,8 +45,8 @@ class Float(DataType):
 
 
 class Boolean(DataType):
-    TRUTHY_STRINGS = ('Y', 'YES', 'T', 'TRUE', 'ON', '1')
-    FALSY_STRINGS = ('', 'N', 'NO', 'F', 'FALSE', 'OFF', '0')
+    TRUTHY_STRINGS = ("Y", "YES", "T", "TRUE", "ON", "1")
+    FALSY_STRINGS = ("", "N", "NO", "F", "FALSE", "OFF", "0")
 
     def sanitize(self, value):
         if value is None or isinstance(value, bool):
@@ -70,11 +62,7 @@ class Boolean(DataType):
             elif value in self.FALSY_STRINGS:
                 return False
             else:
-                raise DataTypeError(
-                    'Could not coerce "%s" to a Boolean' % (
-                        value,
-                    )
-                )
+                raise DataTypeError('Could not coerce "%s" to a Boolean' % (value,))
 
         return True if value else False
 
@@ -87,7 +75,7 @@ class List(DataType):
         elif isinstance(subtype, type) and issubclass(subtype, DataType):
             self.subtype = subtype()
         else:
-            raise TypeError('subtype must be a DataType')
+            raise TypeError("subtype must be a DataType")
 
     def sanitize(self, value):
         if value is None:
@@ -96,10 +84,7 @@ class List(DataType):
         if not isinstance(value, (list, tuple)):
             value = [value]
 
-        value = [
-            self.subtype.sanitize(v)
-            for v in value
-        ]
+        value = [self.subtype.sanitize(v) for v in value]
 
         return value
 
@@ -114,7 +99,7 @@ class Choice(DataType):
         elif isinstance(subtype, type) and issubclass(subtype, DataType):
             self.subtype = subtype()
         else:
-            raise TypeError('subtype must be a DataType')
+            raise TypeError("subtype must be a DataType")
 
         self.choices = choices
 
@@ -126,10 +111,8 @@ class Choice(DataType):
 
         if value not in self.choices:
             raise DataTypeError(
-                '"%s" is not one of (%s)' % (
-                    value,
-                    ', '.join([repr(c) for c in self.choices]),
-                )
+                '"%s" is not one of (%s)'
+                % (value, ", ".join([repr(c) for c in self.choices]))
             )
 
         return value

@@ -3,10 +3,7 @@ import StringIO
 import sys
 
 
-__all__ = (
-    'csv_to_list',
-    'UnicodeMixin',
-)
+__all__ = ("csv_to_list", "UnicodeMixin")
 
 
 def csv_to_list(value):
@@ -23,4 +20,4 @@ class UnicodeMixin(object):
     if sys.version_info >= (3, 0):
         __str__ = lambda x: x.__unicode__()
     else:
-        __str__ = lambda x: unicode(x).encode('utf-8')
+        __str__ = lambda x: unicode(x).encode("utf-8")

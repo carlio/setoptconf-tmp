@@ -6,9 +6,7 @@ from ..util import csv_to_list
 from .base import Source
 
 
-__all__ = (
-    'EnvironmentVariableSource',
-)
+__all__ = ("EnvironmentVariableSource",)
 
 
 class EnvironmentVariableSource(Source):
@@ -28,7 +26,7 @@ class EnvironmentVariableSource(Source):
     def get_setting(self, setting):
         name = setting.name
         if self.prefix:
-            name = '%s_%s' % (self.prefix, name)
+            name = "%s_%s" % (self.prefix, name)
         name = name.upper()
 
         if name in os.environ:

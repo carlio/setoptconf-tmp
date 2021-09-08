@@ -2,16 +2,14 @@ from .exception import MissingRequiredError, ReadOnlyError
 from .util import UnicodeMixin
 
 
-__all__ = (
-    'Configuration',
-)
+__all__ = ("Configuration",)
 
 
 class Configuration(UnicodeMixin):
     def __init__(self, settings, parent=None):
-        self.__dict__['_parent'] = parent
+        self.__dict__["_parent"] = parent
 
-        self.__dict__['_settings'] = {}
+        self.__dict__["_settings"] = {}
         for setting in settings:
             self._settings[setting.name] = setting
 
@@ -49,13 +47,13 @@ class Configuration(UnicodeMixin):
         return getattr(self, key)
 
     def __setattr__(self, name, value):
-        raise ReadOnlyError('Cannot change the value of settings')
+        raise ReadOnlyError("Cannot change the value of settings")
 
     def __setitem__(self, key, value):
         setattr(self, key, value)
 
     def __delattr__(self, name):
-        raise ReadOnlyError('Cannot delete settings')
+        raise ReadOnlyError("Cannot delete settings")
 
     def __delitem__(self, key):
         delattr(self, key)
@@ -73,12 +71,9 @@ class Configuration(UnicodeMixin):
         return item in list(iter(self))
 
     def __unicode__(self):  # pragma: no cover
-        return u'Configuration(%s)' % (
-            u', '.join([
-                u'%s=%s' % (name, repr(self[name]))
-                for name in self
-            ])
+        return u"Configuration(%s)" % (
+            u", ".join([u"%s=%s" % (name, repr(self[name])) for name in self])
         )
 
     def __repr__(self):  # pragma: no cover
-        return '<%s>' % str(self)
+        return "<%s>" % str(self)

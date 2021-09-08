@@ -1,7 +1,4 @@
-
-__all__ = (
-    'Source',
-)
+__all__ = ("Source",)
 
 
 class Source(object):

@@ -4,10 +4,7 @@ from ..config import Configuration
 from .base import Source
 
 
-__all__ = (
-    'ModuleSource',
-    'ObjectSource',
-)
+__all__ = ("ModuleSource", "ObjectSource")
 
 
 class ModuleSource(Source):
@@ -19,9 +16,7 @@ class ModuleSource(Source):
         elif isinstance(target, basestring):
             self.target = __import__(target, globals(), locals(), [], -1)
         else:
-            raise TypeError(
-                'target must be a Module or a String naming a Module'
-            )
+            raise TypeError("target must be a Module or a String naming a Module")
 
     def get_config(self, settings, manager=None, parent=None):
         for setting in settings:
@@ -38,7 +33,7 @@ class ObjectSource(Source):
         if isinstance(target, (type, object)):
             self.target = target
         elif isinstance(target, basestring):
-            parts = target.rsplit('.', 2)
+            parts = target.rsplit(".", 2)
             if len(parts) == 2:
                 mod = parts[0]
                 fromlist = [parts[1]]
@@ -47,9 +42,7 @@ class ObjectSource(Source):
                 fromlist = []
             self.target = __import__(mod, globals(), locals(), fromlist, -1)
         else:
-            raise TypeError(
-                'target must be an Object or a String naming an Object'
-            )
+            raise TypeError("target must be an Object or a String naming an Object")
 
     def get_config(self, settings, manager=None, parent=None):
         for setting in settings:

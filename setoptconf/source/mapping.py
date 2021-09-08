@@ -2,9 +2,7 @@ from ..config import Configuration
 from .base import Source
 
 
-__all__ = (
-    'MappingSource',
-)
+__all__ = ("MappingSource",)
 
 
 class MappingSource(Source):

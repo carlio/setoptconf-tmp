@@ -6,11 +6,7 @@ from ..config import Configuration
 from .base import Source
 
 
-__all__ = (
-    'HomeDirectory',
-    'ConfigDirectory',
-    'FileBasedSource',
-)
+__all__ = ("HomeDirectory", "ConfigDirectory", "FileBasedSource")
 
 
 class DirectoryModifier(object):
@@ -23,23 +19,14 @@ class DirectoryModifier(object):
 
 class HomeDirectory(DirectoryModifier):
     def __call__(self):
-        return os.path.expanduser(
-            os.path.join(
-                '~',
-                self.target_file,
-            )
-        )
+        return os.path.expanduser(os.path.join("~", self.target_file))
 
 
 class ConfigDirectory(DirectoryModifier):
     def __call__(self):
-        config_dir = os.getenv('XDG_CONFIG_HOME') \
-            or os.path.expanduser(
-                os.path.join(
-                    '~',
-                    '.config',
-                )
-            )
+        config_dir = os.getenv("XDG_CONFIG_HOME") or os.path.expanduser(
+            os.path.join("~", ".config")
+        )
 
         return os.path.join(config_dir, self.target_file)
 
@@ -51,7 +38,7 @@ class FileBasedSource(Source):
         if isinstance(files, (basestring, DirectoryModifier)):
             files = [files]
         elif not isinstance(files, (tuple, list)):
-            raise TypeError('files must be a string or list of strings')
+            raise TypeError("files must be a string or list of strings")
 
         self.files = []
         for target in files:
@@ -60,7 +47,7 @@ class FileBasedSource(Source):
             elif isinstance(target, DirectoryModifier):
                 self.files.append(target())
             else:
-                raise TypeError('files must be a string or list of strings')
+                raise TypeError("files must be a string or list of strings")
 
         self.base_path = base_path or os.getcwd()
         self.combine = combine
@@ -76,9 +63,7 @@ class FileBasedSource(Source):
 
             if os.path.exists(file_path):
                 file_settings = self.get_settings_from_file(
-                    file_path,
-                    deepcopy(settings),
-                    manager=manager,
+                    file_path, deepcopy(settings), manager=manager
                 )
 
                 if file_settings:
@@ -91,10 +76,7 @@ class FileBasedSource(Source):
         if parsed_settings:
             config = parent
             for parsed_setting in reversed(parsed_settings):
-                config = Configuration(
-                    settings=parsed_setting,
-                    parent=config,
-                )
+                config = Configuration(settings=parsed_setting, parent=config)
 
         else:
             config = Configuration(settings=settings, parent=parent)

@@ -23,7 +23,8 @@ setup(
     author_email="jay@classless.net",
     license="MIT",
     keywords=["settings", "options", "configuration", "config", "arguments"],
-    description="A module for retrieving program settings from various" " sources in a consistant method.",
+    description="A module for retrieving program settings from various"
+    " sources in a consistant method.",
     long_description=get_description(),
     url="https://github.com/jayclassless/setoptconf",
     classifiers=[

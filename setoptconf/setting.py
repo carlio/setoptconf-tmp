@@ -1,4 +1,3 @@
-
 # pylint: disable=W0401,W0223
 
 import re
@@ -9,18 +8,18 @@ from .util import UnicodeMixin
 
 
 __all__ = (
-    'Setting',
-    'StringSetting',
-    'IntegerSetting',
-    'FloatSetting',
-    'BooleanSetting',
-    'ListSetting',
-    'ChoiceSetting',
+    "Setting",
+    "StringSetting",
+    "IntegerSetting",
+    "FloatSetting",
+    "BooleanSetting",
+    "ListSetting",
+    "ChoiceSetting",
 )
 
 
 class Setting(UnicodeMixin, DataType):
-    RE_NAME = re.compile(r'^[a-z](?:[a-z0-9]|[_](?![_]))*[a-z0-9]$')
+    RE_NAME = re.compile(r"^[a-z](?:[a-z0-9]|[_](?![_]))*[a-z0-9]$")
 
     def __init__(self, name, default=None, required=False):
         if Setting.RE_NAME.match(name):
@@ -46,10 +45,10 @@ class Setting(UnicodeMixin, DataType):
         return unicode(self.name)
 
     def __repr__(self):  # pragma: no cover
-        return '<%s(%s=%s)>' % (
+        return "<%s(%s=%s)>" % (
             self.__class__.__name__,
             self.name,
-            self.value if self.established else '',
+            self.value if self.established else "",
         )
 
 

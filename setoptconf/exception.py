@@ -1,10 +1,9 @@
-
 __all__ = (
-    'SetOptConfError',
-    'NamingError',
-    'DataTypeError',
-    'MissingRequiredError',
-    'ReadOnlyError',
+    "SetOptConfError",
+    "NamingError",
+    "DataTypeError",
+    "MissingRequiredError",
+    "ReadOnlyError",
 )
 
 
