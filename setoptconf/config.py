@@ -1,11 +1,10 @@
 from .exception import MissingRequiredError, ReadOnlyError
-from .util import UnicodeMixin
 
 
 __all__ = ("Configuration",)
 
 
-class Configuration(UnicodeMixin):
+class Configuration:
     def __init__(self, settings, parent=None):
         self.__dict__["_parent"] = parent
 
@@ -70,9 +69,9 @@ class Configuration(UnicodeMixin):
     def __contains__(self, item):
         return item in list(iter(self))
 
-    def __unicode__(self):  # pragma: no cover
-        return u"Configuration(%s)" % (
-            u", ".join([u"%s=%s" % (name, repr(self[name])) for name in self])
+    def __str__(self):  # pragma: no cover
+        return "Configuration(%s)" % (
+            ", ".join([u"%s=%s" % (name, repr(self[name])) for name in self])
         )
 
     def __repr__(self):  # pragma: no cover

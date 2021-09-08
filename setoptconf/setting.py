@@ -4,7 +4,6 @@ import re
 
 from .datatype import *
 from .exception import NamingError
-from .util import UnicodeMixin
 
 
 __all__ = (
@@ -18,7 +17,7 @@ __all__ = (
 )
 
 
-class Setting(UnicodeMixin, DataType):
+class Setting(DataType):
     RE_NAME = re.compile(r"^[a-z](?:[a-z0-9]|[_](?![_]))*[a-z0-9]$")
 
     def __init__(self, name, default=None, required=False):
@@ -41,7 +40,7 @@ class Setting(UnicodeMixin, DataType):
         self._value = self.sanitize(value)
         self.established = True
 
-    def __unicode__(self):  # pragma: no cover
+    def __str__(self):  # pragma: no cover
         return unicode(self.name)
 
     def __repr__(self):  # pragma: no cover
