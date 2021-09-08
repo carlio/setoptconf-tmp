@@ -4,7 +4,7 @@ IMPORTANT!
 
 This is a fork of `setoptconf <https://github.com/jayclassless/setoptconf>`_ .
 It is a temporary solution to fix `prospector <https://github.com/PyCQA/prospector>`_
-being unable to install due to setoptconf not working with setuptools>=58 - 
+being unable to install due to setoptconf not working with setuptools >= 58 - 
 see `the issue here <https://github.com/PyCQA/prospector/issues/438>`_.
 
 This package is only meant as a temporary solution to fix CI builds using prosector

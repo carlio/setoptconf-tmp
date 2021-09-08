@@ -11,7 +11,7 @@ def get_description():
 
 setup(
     name="setoptconf-tmp",
-    version='0.3.0',
+    version='0.3.1',
     author="Jason Simeone",
     author_email="jay@classless.net",
     maintainer="Carl Crowder",
