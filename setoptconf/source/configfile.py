@@ -1,4 +1,4 @@
-import ConfigParser
+from configparser import ConfigParser
 
 from ..setting import ListSetting
 from ..util import csv_to_list
